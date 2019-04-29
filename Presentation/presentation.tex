@@ -1,0 +1,83 @@
+\documentclass{beamer}
+
+\usetheme{Boadilla}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{multicol} % itemize sur plusieurs colonnes
+\usepackage{tikz} % pour tracer des figures
+\usepackage{subfig} % pour mettre images à côté
+\usepackage[absolute,overlay]{textpos}
+\setcounter{tocdepth}{1} % afficher que les sections dans le sommaire
+\usepackage{changepage}
+\usepackage{xcolor} % to highlight text
+\usepackage{ulem} % strikeout text
+\usepackage[export]{adjustbox} % center images and text in table
+\usepackage{array}
+\newcolumntype{?}{!{\vrule width 1pt}}
+
+\setbeamertemplate{navigation symbols}{}
+
+\hypersetup{ % couleur des liens
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=black,      
+    urlcolor=blue,
+}
+
+\AtBeginSection[] % faire apparaître le sommaire avant chaque nouvelle section
+{
+  \begin{frame}
+    \frametitle{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\newenvironment{myitemize}
+{ \begin{itemize}
+	\scriptsize }
+{ \end{itemize} } 
+
+\newif\ifplacelogo %Booléen pour placer ou non le logo
+\placelogotrue %Initialisation booléen à 'True'
+\logo{\ifplacelogo\includegraphics[height=5mm]{Images/logoINSA.png}\fi} %Initialisation du logo (fonction du booléen)
+
+\title{Animal Classification with Keras}
+\author[MA \--- DT \--- WZ]{Mehdi ABOUZAID  \\ Damien TOOMEY \\ Weihao ZHOU}
+\institute[INSA Rouen]{INSA \--- National Institute of Applied Sciences}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\placelogofalse
+\begin{frame}
+\frametitle{Plan} 
+\tableofcontents
+\end{frame}	
+
+\section{Introduction}
+\input{src/introduction.tex}
+
+\section{CNN}
+\input{src/CNN.tex}
+
+\section{Xception}
+\input{src/Xception.tex}
+
+\section{VGG-16}
+\input{src/VGG-16.tex}
+
+\section{ResNet-50}
+\input{src/ResNet-50.tex}
+
+\section{Conclusion}
+\input{src/conclusion.tex}
+
+\section{References}
+\input{src/references.tex}
+
+\end{document}
